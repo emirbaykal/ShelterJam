@@ -7,13 +7,14 @@ using Toggle = UnityEngine.UI.Toggle;
 
 public class button : MonoBehaviour
 {
-    public GameObject yemekToggle, suToggle, mutlulukToggle;
+    public GameObject foodToggle, waterToggle, happnessToggle,killToggle;
     // Start is called before the first frame update
     void Start()
     {
-       yemekToggle = GameObject.Find("yemek");
-       suToggle = GameObject.Find("su");
-       mutlulukToggle=GameObject.Find("mutluluk");
+       foodToggle = GameObject.Find("food");
+       waterToggle = GameObject.Find("water");
+       happnessToggle=GameObject.Find("happness");
+       killToggle=GameObject.Find("kill");
     }
 
     // Update is called once per frame
@@ -21,27 +22,34 @@ public class button : MonoBehaviour
     {
         
     }
-    public void yemek()
+    public void Food()
     {
-        if (yemekToggle.GetComponent<Toggle>().isOn == true)
+        if (foodToggle.GetComponent<Toggle>().isOn == true)
         {
             Debug.Log("yemek");
         }
         
         
     }
-    public void su()
+    public void Water()
     {
-        if (suToggle.GetComponent<Toggle>().isOn == true)
+        if (waterToggle.GetComponent<Toggle>().isOn == true)
         {
             Debug.Log("su");
         }
     }
-    public void mutluluk()
+    public void Happness()
     {
-        if (mutlulukToggle.GetComponent<Toggle>().isOn == true)
+        if (happnessToggle.GetComponent<Toggle>().isOn == true)
         {
             Debug.Log("mutluluk");
+        }
+    }
+    public void Kill()
+    {
+        if (killToggle.GetComponent<Toggle>().isOn == true)
+        {
+            Debug.Log("ölüm");
         }
     }
 }
