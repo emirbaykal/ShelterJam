@@ -30,17 +30,35 @@ public class GameManager : MonoBehaviour
 
   private void FoodUpdate()
     {
-        if (Happiness >= 65)
+        if (Happiness >= 80)
         {
-            
+            Food += FoodDecrease + Population* 2 / 10;
         }
-        else if (Happiness >= 80)
+        else if (Happiness <= 20)
         {
+            Food += FoodDecrease - Population * 2 / 10;
 
         }
         else
         {
+            Food += FoodDecrease;
+        }
+    }
 
+    private void WaterUpdate()
+    {
+        if (Happiness >= 80)
+        {
+            Water +=WaterIncrease + Population* 2 / 10;
+        }
+        else if (Happiness <= 20)
+        {
+            Water += WaterIncrease - Population * 2 / 10;
+
+        }
+        else
+        {
+            Water += WaterIncrease;
         }
     }
     private void Update()
@@ -53,7 +71,7 @@ public class GameManager : MonoBehaviour
     public void FoodSearch()
     {
         //(FoodIncraese - FoodDecrease)
-        Food +=  FoodDecrease;
+        FoodUpdate();
         Water -= Population*8/10;
         Happiness -= HappinessDecrease;
         int rand = Random.Range(0, 100);
@@ -65,7 +83,7 @@ public class GameManager : MonoBehaviour
     public void WaterSearch()
     {
         Food -= Population * 6 / 10;
-        Water += WaterIncrease;
+        WaterUpdate();
         Happiness -= HappinessDecrease;
         int rand = Random.Range(0, 100);
         if (rand <= 8)
