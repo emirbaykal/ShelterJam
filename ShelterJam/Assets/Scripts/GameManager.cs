@@ -33,7 +33,7 @@ public class GameManager : MonoBehaviour
     {
         
         FoodDecrease = (int)(-0.055f * ((Population - 31.5) * (Population - 31.5)) + 30);
-        WaterIncrease = (int)(+0.16326f* ((Population - 34) * (Population - 34)) + 35);
+        WaterIncrease = (int)(-0.1f* ((Population - 29  ) * (Population - 29)) + 31);
 
     }
     public void FoodSearch()
