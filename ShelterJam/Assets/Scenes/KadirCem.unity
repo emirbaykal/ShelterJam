@@ -561,17 +561,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Food: 100
-  Water: 0
-  Happiness: 0
-  Population: 0
+  Water: 100
+  Happiness: 100
+  Population: 100
   FoodDecrease: 50
   FoodIncraese: 40
-  WaterDecrease: 0
-  WaterIncrease: 0
-  HappinessIncrease: 0
-  HappinessDecrease: 0
-  PopulationDecrease: 0
-  PopulationIncrease: 0
+  WaterDecrease: 50
+  WaterIncrease: 40
+  HappinessIncrease: 50
+  HappinessDecrease: 40
+  PopulationDecrease: 50
+  PopulationIncrease: 40
 --- !u!4 &309980790
 Transform:
   m_ObjectHideFlags: 0

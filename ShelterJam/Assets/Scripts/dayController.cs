@@ -14,11 +14,10 @@ public class dayController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
-         foodToggle = GameObject.Find("Food");
-       waterToggle = GameObject.Find("Water");
-       happnessToggle=GameObject.Find("Free Time");
-       killToggle=GameObject.Find("Kill");
+        foodToggle = GameObject.Find("Food");
+        waterToggle = GameObject.Find("Water");
+        happnessToggle=GameObject.Find("Free Time");
+        killToggle=GameObject.Find("Kill");
         
         
         ////////////////////////////
@@ -40,18 +39,22 @@ public class dayController : MonoBehaviour
         if (foodToggle.GetComponent<Toggle>().isOn == true)
         {
             gameManager.FoodSearch();
+            foodToggle.GetComponent<Toggle>().isOn = true;
         }
         if (waterToggle.GetComponent<Toggle>().isOn == true)
         {
             gameManager.WaterSearch();
+            waterToggle.GetComponent<Toggle>().isOn = true;
         }
         if (happnessToggle.GetComponent<Toggle>().isOn == true)
         {
             gameManager.FreeTime();
+            happnessToggle.GetComponent<Toggle>().isOn = false;
         }
         if (killToggle.GetComponent<Toggle>().isOn == true)
         {
             gameManager.KillPopulation();
+            killToggle.GetComponent<Toggle>().isOn = true;
         }
 
         ////////////////////////////////////////
