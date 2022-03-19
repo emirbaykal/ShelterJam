@@ -30,6 +30,8 @@ public class GameManager : MonoBehaviour
 
   private void FoodUpdate()
     {
+        
+
         if (Happiness >= 80)
         {
             Food += FoodDecrease + Population* 2 / 10;
@@ -64,6 +66,38 @@ public class GameManager : MonoBehaviour
     private void Update()
     {
         
+        if (Food <=0)
+        {
+            Food = 0;
+        }
+        if (Water <= 0)
+        {
+            Water = 0;
+        }
+        if (Food >= 100)
+        {
+            Food = 100;
+        }
+        if (Water >= 100)
+        {
+            Water = 100;
+        }
+        if (Happiness <=0)
+        {
+            Happiness = 0;
+        }
+        if (Population <= 0)
+        {
+            Population = 0;
+        }
+        if (Population <= 10)
+        {
+            FoodDecrease = 4;
+        }
+        if (Population <= 12)
+        {
+            WaterDecrease = 4;
+        }
         FoodDecrease = (int)(-0.055f * ((Population - 31.5) * (Population - 31.5)) + 30);
         WaterIncrease = (int)(-0.1f* ((Population - 29  ) * (Population - 29)) + 31);
 
@@ -71,9 +105,10 @@ public class GameManager : MonoBehaviour
     public void FoodSearch()
     {
         //(FoodIncraese - FoodDecrease)
+       
         FoodUpdate();
         Water -= Population*8/10;
-        Happiness -= HappinessDecrease;
+        HappiessController();
         int rand = Random.Range(0, 100);
         if (rand <= 25)
         {
@@ -82,15 +117,18 @@ public class GameManager : MonoBehaviour
     }
     public void WaterSearch()
     {
+        HappiessController();
         Food -= Population * 6 / 10;
         WaterUpdate();
-        Happiness -= HappinessDecrease;
+
+       
         int rand = Random.Range(0, 100);
         if (rand <= 8)
         {
             Population -= Population * 3 / 100;
         }
         
+
         
 
     }
@@ -127,14 +165,25 @@ public class GameManager : MonoBehaviour
             Population += x;
         }
     }
-    public void Parabola()
-    {
 
-        Debug.Log((int)(-0.00765f * ((Population - 100) * (Population - 100)) + 70));
-        Food += (int)(-0.00765f * ((Population - 100) * (Population - 100)) + 70);
-
-
-
+    public void HappiessController() {
+        
+        if (Food == 0 || Water == 0)
+        {
+            Debug.Log(69);
+            Happiness -= HappinessDecrease + HappinessDecrease * 6 / 10;
+        }
+        
+        {
+            Happiness -= HappinessDecrease;
+        }
+        if (Water ==0 && Food == 0)
+        {
+            Debug.Log(31);
+            Happiness-= HappinessDecrease + HappinessDecrease * 8 / 10;
+        }
+       
+    
+    
     }
-
 }
