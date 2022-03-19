@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+
     [Header("Variables")]
     public int Food;
     public int Water;
@@ -19,46 +20,89 @@ public class GameManager : MonoBehaviour
     //
     public int HappinessIncrease;
     public int HappinessDecrease;
+    [SerializeField] int HappinessKill;
     //
     public int PopulationDecrease;
-    public int PopulationIncrease;
+    [SerializeField] int PopulationIncrease;
 
+
+    public dayController Day;
+
+  
+    private void Update()
+    {
+        
+        FoodDecrease = (int)(-0.055f * ((Population - 31.5) * (Population - 31.5)) + 30);
+        WaterIncrease = (int)(+0.16326f* ((Population - 34) * (Population - 34)) + 35);
+
+    }
     public void FoodSearch()
     {
-        Food += FoodIncraese;
-        Water -= WaterDecrease;
+        //(FoodIncraese - FoodDecrease)
+        Food +=  FoodDecrease;
+        Water -= Population*8/10;
         Happiness -= HappinessDecrease;
         int rand = Random.Range(0, 100);
         if (rand <= 25)
         {
-            Population -= PopulationDecrease;
+            Population -= Population * 3 / 100;
         }
     }
     public void WaterSearch()
     {
-        int rand = Random.Range(0, 100);
-        if (rand <= 25)
-        {
-            Population -= PopulationDecrease;
-        }
-        Food -= FoodDecrease;
+        Food -= Population * 6 / 10;
         Water += WaterIncrease;
         Happiness -= HappinessDecrease;
+        int rand = Random.Range(0, 100);
+        if (rand <= 8)
+        {
+            Population -= Population * 3 / 100;
+        }
+        
+        
 
     }
-   public void KillPopulation()
+    public void KillPopulation()
     {
         Population -= PopulationDecrease;
-        Food -= FoodDecrease;
-        Water -= WaterDecrease;
-        Happiness -= HappinessDecrease;
+        Food -= Population * 6 / 10;
+        Water -= Population * 8 / 10;
+        Happiness -= HappinessKill;
 
     }
     public void FreeTime()
     {
-        Food -= FoodDecrease;
-        Water -= WaterDecrease;
+        Food -= Population * 6 / 10;
+        Water -= Population * 8 / 10;
         Happiness += HappinessIncrease;
+        Population += PopulationIncrease;
+    }
+    public void NextDay()
+    {
+        Debug.Log(31);
+        Food -= Population*6/10;
+        Water -= Population * 8 / 10;
+        Happiness += HappinessIncrease / 3;
 
     }
+    public void PopulationUpdate()
+    {
+
+        int x;
+        if (Day.gunSayac % 3 == 0)
+        {
+            x = Population / 15;
+            Population += x;
+        }
+    }
+    public void Parabola()
+    {
+
+        Debug.Log((int)(-0.00765f * ((Population - 100) * (Population - 100)) + 70));
+        Food += (int)(-0.00765f * ((Population - 100) * (Population - 100)) + 70);
+
+
+
+    }
+
 }

@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class dayController : MonoBehaviour
 {
-    private int gunSayac,aySayac, yilSayac;
+    public int gunSayac,aySayac, yilSayac;
     public Text takvim;
     public GameManager gameManager;
 
@@ -35,16 +35,20 @@ public class dayController : MonoBehaviour
 
     public void nextDay()
     {
+        if (killToggle.GetComponent<Toggle>().isOn == false && foodToggle.GetComponent<Toggle>().isOn == false && waterToggle.GetComponent<Toggle>().isOn == false && happnessToggle.GetComponent<Toggle>().isOn == false)
+        {
+            gameManager.NextDay();
+        }
 
         if (foodToggle.GetComponent<Toggle>().isOn == true)
         {
             gameManager.FoodSearch();
-            foodToggle.GetComponent<Toggle>().isOn = true;
+            foodToggle.GetComponent<Toggle>().isOn = false;
         }
         if (waterToggle.GetComponent<Toggle>().isOn == true)
         {
             gameManager.WaterSearch();
-            waterToggle.GetComponent<Toggle>().isOn = true;
+            waterToggle.GetComponent<Toggle>().isOn = false;
         }
         if (happnessToggle.GetComponent<Toggle>().isOn == true)
         {
@@ -54,9 +58,10 @@ public class dayController : MonoBehaviour
         if (killToggle.GetComponent<Toggle>().isOn == true)
         {
             gameManager.KillPopulation();
-            killToggle.GetComponent<Toggle>().isOn = true;
+            killToggle.GetComponent<Toggle>().isOn = false;
         }
-
+        
+         gameManager.PopulationUpdate();
         ////////////////////////////////////////
         gunSayac++;
         if (gunSayac == 31)
