@@ -28,7 +28,21 @@ public class GameManager : MonoBehaviour
 
     public dayController Day;
 
-  
+  private void FoodUpdate()
+    {
+        if (Happiness >= 65)
+        {
+            
+        }
+        else if (Happiness >= 80)
+        {
+
+        }
+        else
+        {
+
+        }
+    }
     private void Update()
     {
         
