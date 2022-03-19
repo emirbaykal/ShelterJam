@@ -653,7 +653,7 @@ MonoBehaviour:
   HappinessIncrease: 9
   HappinessDecrease: 7
   HappinessKill: 10
-  PopulationDecrease: 10
+  PopulationDecrease: 5
   PopulationIncrease: 2
   Day: {fileID: 68912603}
 --- !u!4 &309980790

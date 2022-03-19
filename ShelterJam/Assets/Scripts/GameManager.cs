@@ -65,7 +65,9 @@ public class GameManager : MonoBehaviour
     }
     private void Update()
     {
-        
+
+        FoodDecrease = (int)(-0.055f * ((Population - 31.5) * (Population - 31.5)) + 30);
+        WaterIncrease = (int)(-0.1f * ((Population - 29) * (Population - 29)) + 31);
         if (Food <=0)
         {
             Food = 0;
@@ -96,19 +98,36 @@ public class GameManager : MonoBehaviour
         }
         if (Population <= 12)
         {
-            WaterDecrease = 4;
+            WaterIncrease = 4;
         }
-        FoodDecrease = (int)(-0.055f * ((Population - 31.5) * (Population - 31.5)) + 30);
-        WaterIncrease = (int)(-0.1f* ((Population - 29  ) * (Population - 29)) + 31);
+        
+
+    }
+
+    public void HappinessCheck()
+    {
+
+        if (Food == 0 || Water == 0)
+        {
+            Debug.Log(69);
+            Happiness -= HappinessDecrease + HappinessDecrease * 4 / 10;
+        }
+
+        if (Water == 0 && Food == 0)
+        {
+            Debug.Log(31);
+            Happiness -= HappinessDecrease + HappinessDecrease * 6 / 10;
+        }
+
 
     }
     public void FoodSearch()
     {
         //(FoodIncraese - FoodDecrease)
-       
+        
         FoodUpdate();
         Water -= Population*8/10;
-        HappiessController();
+        Happiness -= HappinessDecrease;
         int rand = Random.Range(0, 100);
         if (rand <= 25)
         {
@@ -117,7 +136,8 @@ public class GameManager : MonoBehaviour
     }
     public void WaterSearch()
     {
-        HappiessController();
+        HappinessCheck();
+        Happiness -= HappinessDecrease;
         Food -= Population * 6 / 10;
         WaterUpdate();
 
@@ -134,14 +154,16 @@ public class GameManager : MonoBehaviour
     }
     public void KillPopulation()
     {
+        HappinessCheck();
         Population -= PopulationDecrease;
         Food -= Population * 6 / 10;
         Water -= Population * 8 / 10;
-        Happiness -= HappinessKill;
+        Happiness -= HappinessKill*3/2;
 
     }
     public void FreeTime()
     {
+        HappinessCheck();
         Food -= Population * 6 / 10;
         Water -= Population * 8 / 10;
         Happiness += HappinessIncrease;
@@ -149,10 +171,13 @@ public class GameManager : MonoBehaviour
     }
     public void NextDay()
     {
-        Debug.Log(31);
+        HappinessCheck();
+       /* Debug.Log(31);
         Food -= Population*6/10;
         Water -= Population * 8 / 10;
         Happiness += HappinessIncrease / 3;
+       */
+        
 
     }
     public void PopulationUpdate()
@@ -166,24 +191,5 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void HappiessController() {
-        
-        if (Food == 0 || Water == 0)
-        {
-            Debug.Log(69);
-            Happiness -= HappinessDecrease + HappinessDecrease * 6 / 10;
-        }
-        
-        {
-            Happiness -= HappinessDecrease;
-        }
-        if (Water ==0 && Food == 0)
-        {
-            Debug.Log(31);
-            Happiness-= HappinessDecrease + HappinessDecrease * 8 / 10;
-        }
-       
     
-    
-    }
 }
