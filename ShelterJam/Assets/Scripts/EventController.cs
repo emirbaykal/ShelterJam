@@ -78,25 +78,25 @@ public class EventController : MonoBehaviour
         switch (EventNumber)
         {
             case 0:
-                EventText.text = "1";
-                leftText.text = "asd";
-                rightText.text = "amk";
+                EventText.text = "Koloninden birkaç kiþi bir yardým paketi buldu";
+                leftText.text = "Suyu al (su +)";
+                rightText.text = "Yemeði al (yemek +)";
                 break;
             case 1:
-                EventText.text = "2";
-                leftText.text = "aq";
-                rightText.text = "amk";
+                EventText.text = "Dýþarda yaralý insanlar buldun";
+                leftText.text = "Ýnsanlarý sýðýnaða al (insan +)";
+                rightText.text = "Ýnsanlarý dýþarýda býrak (mutluluk +)";
                 break;
             case 2:
-                EventText.text = "3";
-                leftText.text = "aq";
-                rightText.text = "amk";
+                EventText.text = "Yemek deponda yangýn çýktý";
+                leftText.text = "Söndür (su -)";
+                rightText.text = "Söndürme (yemek -)";
                 break;
             case 3:
-                EventText.text = "4";
-                leftText.text = "aq";
-                rightText.text = "amk";
-                break;
+                EventText.text = "Deprem oluyor";
+                leftText.text = "Ýnsanlarý güvenli alana ulaþtýr (yemek -)";
+                rightText.text = "Yemekleri kurtar (insan -)";
+                break; 
             case 4:
                 EventText.text = "5";
                 leftText.text = "aq";
