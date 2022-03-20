@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class dayController : MonoBehaviour
 {
+    public EventController eventmanager;
     public int gunSayac,aySayac, yilSayac;
     public Text takvim;
     public GameManager gameManager;
@@ -12,6 +13,10 @@ public class dayController : MonoBehaviour
     public GameObject foodToggle, waterToggle, happnessToggle, killToggle;
 
     // Start is called before the first frame update
+    private void Awake()
+    {
+        eventmanager = GameObject.Find("EventManager").GetComponent<EventController>();
+    }
     void Start()
     {
         
@@ -31,11 +36,12 @@ public class dayController : MonoBehaviour
 
     public void nnextDay()
     {
+        eventmanager.isEventDay();
+                
         if (killToggle.GetComponent<Toggle>().isOn == false && foodToggle.GetComponent<Toggle>().isOn == false && waterToggle.GetComponent<Toggle>().isOn == false && happnessToggle.GetComponent<Toggle>().isOn == false)
         {
             gameManager.NextDay();
         }
-
         if (foodToggle.GetComponent<Toggle>().isOn == true)
         {
             gameManager.FoodSearch();
