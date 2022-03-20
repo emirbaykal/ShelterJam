@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class dayController : MonoBehaviour
 {
     public EventController eventmanager;
-    public int gunSayac,aySayac, yilSayac;
+    public int gunSayac;
     public Text takvim;
     public GameManager gameManager;
 
@@ -22,10 +22,9 @@ public class dayController : MonoBehaviour
         
         
         ////////////////////////////
-        gunSayac = 1;
-        aySayac = 11;
-        yilSayac = 1;
-        takvim.text = yilSayac + ". yil   " + aySayac + ". ay   "+ gunSayac+".gun   ";
+        gunSayac = 60;
+        
+        takvim.text =gunSayac+" .gun";
     }
 
     // Update is called once per frame
@@ -66,19 +65,12 @@ public class dayController : MonoBehaviour
 
         gameManager.PopulationUpdate();
         ////////////////////////////////////////
-        gunSayac++;
-        if (gunSayac == 31)
+        gunSayac--;
+        if (gunSayac == 0)
         {
-            gunSayac = 1;
-            aySayac++;
+            Debug.Log("gün bitti");
         }
-        if (aySayac == 13)
-        {
-            aySayac = 1;
-            yilSayac++;
-        }
+        takvim.text = gunSayac+" .gun";
 
-        takvim.text = yilSayac + ". yil   " + aySayac + ". ay   "+ gunSayac+".gun   ";
-        
     }
 }
